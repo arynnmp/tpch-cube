@@ -1,0 +1,44 @@
+cubes:
+  - name: supplier
+    sql_table: "\"TPCH_SF100\".\"SUPPLIER\""
+
+    joins: []
+
+    dimensions:
+      - name: s_suppkey
+        sql: "{CUBE}.\"S_SUPPKEY\""
+        type: number
+        primary_key: true
+
+      - name: s_acctbal
+        sql: "{CUBE}.\"S_ACCTBAL\""
+        type: number
+
+      - name: s_nationkey
+        sql: "{CUBE}.\"S_NATIONKEY\""
+        type: number
+
+      - name: s_comment
+        sql: "{CUBE}.\"S_COMMENT\""
+        type: string
+
+      - name: s_phone
+        sql: "{CUBE}.\"S_PHONE\""
+        type: string
+
+      - name: s_name
+        sql: "{CUBE}.\"S_NAME\""
+        type: string
+
+      - name: s_address
+        sql: "{CUBE}.\"S_ADDRESS\""
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

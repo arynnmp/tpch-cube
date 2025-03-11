@@ -1,0 +1,84 @@
+cubes:
+  - name: lineitem
+    sql_table: "\"TPCH_SF100\".\"LINEITEM\""
+
+    joins:
+      - name: orders
+        sql: "{CUBE}.\"L_ORDERKEY\" = {orders}.\"O_ORDERKEY\""
+        relationship: many_to_one
+
+    dimensions:
+      - name: l_orderkey
+        sql: "{CUBE}.\"L_ORDERKEY\""
+        type: number
+        primary_key: true
+
+      - name: l_linenumber
+        sql: "{CUBE}.\"L_LINENUMBER\""
+        type: number
+        primary_key: true
+
+      - name: l_quantity
+        sql: "{CUBE}.\"L_QUANTITY\""
+        type: number
+
+      - name: l_extendedprice
+        sql: "{CUBE}.\"L_EXTENDEDPRICE\""
+        type: number
+
+      - name: l_suppkey
+        sql: "{CUBE}.\"L_SUPPKEY\""
+        type: number
+
+      - name: l_discount
+        sql: "{CUBE}.\"L_DISCOUNT\""
+        type: number
+
+      - name: l_tax
+        sql: "{CUBE}.\"L_TAX\""
+        type: number
+
+      - name: l_partkey
+        sql: "{CUBE}.\"L_PARTKEY\""
+        type: number
+
+      - name: l_returnflag
+        sql: "{CUBE}.\"L_RETURNFLAG\""
+        type: string
+
+      - name: l_linestatus
+        sql: "{CUBE}.\"L_LINESTATUS\""
+        type: string
+
+      - name: l_shipmode
+        sql: "{CUBE}.\"L_SHIPMODE\""
+        type: string
+
+      - name: l_comment
+        sql: "{CUBE}.\"L_COMMENT\""
+        type: string
+
+      - name: l_shipinstruct
+        sql: "{CUBE}.\"L_SHIPINSTRUCT\""
+        type: string
+
+      - name: l_shipdate
+        sql: "{CUBE}.\"L_SHIPDATE\""
+        type: time
+
+      - name: l_commitdate
+        sql: "{CUBE}.\"L_COMMITDATE\""
+        type: time
+
+      - name: l_receiptdate
+        sql: "{CUBE}.\"L_RECEIPTDATE\""
+        type: time
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

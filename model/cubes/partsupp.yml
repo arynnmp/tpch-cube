@@ -1,0 +1,37 @@
+cubes:
+  - name: partsupp
+    sql_table: "\"TPCH_SF100\".\"PARTSUPP\""
+
+    joins: []
+
+    dimensions:
+      - name: ps_suppkey
+        sql: "{CUBE}.\"PS_SUPPKEY\""
+        type: number
+        primary_key: true
+
+      - name: ps_partkey
+        sql: "{CUBE}.\"PS_PARTKEY\""
+        type: number
+        primary_key: true
+
+      - name: ps_supplycost
+        sql: "{CUBE}.\"PS_SUPPLYCOST\""
+        type: number
+
+      - name: ps_availqty
+        sql: "{CUBE}.\"PS_AVAILQTY\""
+        type: number
+
+      - name: ps_comment
+        sql: "{CUBE}.\"PS_COMMENT\""
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

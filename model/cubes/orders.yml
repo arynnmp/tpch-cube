@@ -1,0 +1,52 @@
+cubes:
+  - name: orders
+    sql_table: "\"TPCH_SF100\".\"ORDERS\""
+
+    joins: []
+
+    dimensions:
+      - name: o_orderkey
+        sql: "{CUBE}.\"O_ORDERKEY\""
+        type: number
+        primary_key: true
+
+      - name: o_shippriority
+        sql: "{CUBE}.\"O_SHIPPRIORITY\""
+        type: number
+
+      - name: o_totalprice
+        sql: "{CUBE}.\"O_TOTALPRICE\""
+        type: number
+
+      - name: o_custkey
+        sql: "{CUBE}.\"O_CUSTKEY\""
+        type: number
+
+      - name: o_comment
+        sql: "{CUBE}.\"O_COMMENT\""
+        type: string
+
+      - name: o_orderpriority
+        sql: "{CUBE}.\"O_ORDERPRIORITY\""
+        type: string
+
+      - name: o_orderstatus
+        sql: "{CUBE}.\"O_ORDERSTATUS\""
+        type: string
+
+      - name: o_clerk
+        sql: "{CUBE}.\"O_CLERK\""
+        type: string
+
+      - name: o_orderdate
+        sql: "{CUBE}.\"O_ORDERDATE\""
+        type: time
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

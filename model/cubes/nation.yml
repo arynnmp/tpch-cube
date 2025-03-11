@@ -1,0 +1,35 @@
+cubes:
+  - name: nation
+    sql_table: "\"TPCH_SF100\".\"NATION\""
+
+    joins:
+      - name: customer
+        sql: "{CUBE}.\"N_NATIONKEY\" = {customer}.\"C_NATIONKEY\""
+        relationship: one_to_many
+
+    dimensions:
+      - name: n_nationkey
+        sql: "{CUBE}.\"N_NATIONKEY\""
+        type: number
+        primary_key: true
+
+      - name: n_regionkey
+        sql: "{CUBE}.\"N_REGIONKEY\""
+        type: number
+
+      - name: n_name
+        sql: "{CUBE}.\"N_NAME\""
+        type: string
+
+      - name: n_comment
+        sql: "{CUBE}.\"N_COMMENT\""
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

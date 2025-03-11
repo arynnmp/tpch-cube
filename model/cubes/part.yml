@@ -1,0 +1,52 @@
+cubes:
+  - name: part
+    sql_table: "\"TPCH_SF100\".\"PART\""
+
+    joins: []
+
+    dimensions:
+      - name: p_partkey
+        sql: "{CUBE}.\"P_PARTKEY\""
+        type: number
+        primary_key: true
+
+      - name: p_retailprice
+        sql: "{CUBE}.\"P_RETAILPRICE\""
+        type: number
+
+      - name: p_size
+        sql: "{CUBE}.\"P_SIZE\""
+        type: number
+
+      - name: p_comment
+        sql: "{CUBE}.\"P_COMMENT\""
+        type: string
+
+      - name: p_type
+        sql: "{CUBE}.\"P_TYPE\""
+        type: string
+
+      - name: p_container
+        sql: "{CUBE}.\"P_CONTAINER\""
+        type: string
+
+      - name: p_brand
+        sql: "{CUBE}.\"P_BRAND\""
+        type: string
+
+      - name: p_name
+        sql: "{CUBE}.\"P_NAME\""
+        type: string
+
+      - name: p_mfgr
+        sql: "{CUBE}.\"P_MFGR\""
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
