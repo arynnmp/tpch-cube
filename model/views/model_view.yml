@@ -50,7 +50,7 @@ views:
           - ps_partkey
           - ps_suppkey
 
-      - join_path: lineitem.part.partsupp.supplier
+      - join_path: lineitem.supplier
         prefix: true
         includes: "*"
         excludes:

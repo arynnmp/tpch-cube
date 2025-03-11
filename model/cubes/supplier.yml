@@ -6,6 +6,9 @@ cubes:
       - name: partsupp
         sql: "{CUBE}.\"S_SUPPKEY\" = {partsupp.ps_suppkey}"
         relationship: one_to_many
+      - name: lineitem
+        sql: "{CUBE}.\"S_SUPPKEY\" = {lineitem.l_suppkey}"
+        relationship: one_to_many
 
     dimensions:
       - name: s_suppkey
