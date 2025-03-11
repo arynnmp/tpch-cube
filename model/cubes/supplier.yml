@@ -12,6 +12,7 @@ cubes:
         sql: "{CUBE}.\"S_SUPPKEY\""
         type: number
         primary_key: true
+        public: true
 
       - name: s_acctbal
         sql: "{CUBE}.\"S_ACCTBAL\""

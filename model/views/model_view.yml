@@ -8,6 +8,7 @@ views:
           - l_orderkey
           - l_partkey
           - l_suppkey
+          - l_linenumber
 
       - join_path: lineitem.orders
         prefix: true
@@ -54,6 +55,7 @@ views:
         includes: "*"
         excludes:
           - s_suppkey
+          - s_nationkey
     
     folders:
       - name: Lineitem
