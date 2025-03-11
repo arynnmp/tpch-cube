@@ -2,7 +2,14 @@ cubes:
   - name: partsupp
     sql_table: "\"TPCH_SF100\".\"PARTSUPP\""
 
-    joins: []
+    joins: 
+      - name: part
+        sql: "{CUBE}.ps_partkey = part.p_partkey"
+        relationship: many_to_one
+      - name: supplier
+        sql: "{CUBE}.ps_suppkey = supplier.s_suppkey"
+        relationship: many_to_one
+      
 
     dimensions:
       - name: ps_suppkey

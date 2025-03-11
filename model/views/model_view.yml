@@ -1,0 +1,56 @@
+views:
+  - name: model_view
+    cubes:
+      - join_path: lineitem
+        prefix: true
+        includes: "*"
+        excludes:
+          - l_orderkey
+          - l_partkey
+          - l_suppkey
+
+      - join_path: lineitem.orders
+        prefix: true
+        includes: "*"
+        excludes:
+          - o_orderkey
+          - o_custkey
+
+      - join_path: lineitem.orders.customer
+        prefix: true
+        includes: "*"
+        excludes:
+          - c_custkey
+          - c_nationkey
+
+      - join_path: lineitem.orders.customer.nation
+        prefix: true
+        includes: "*"
+        excludes:
+          - n_nationkey
+          - n_regionkey
+
+      - join_path: lineitem.orders.customer.nation.region
+        prefix: true
+        includes: "*"
+        excludes:
+          - r_regionkey
+
+      - join_path: lineitem.part
+        prefix: true
+        includes: "*"
+        excludes:
+          - p_partkey
+
+      - join_path: lineitem.part.partsupp
+        prefix: true
+        includes: "*"
+        excludes:
+          - ps_partkey
+          - ps_suppkey
+
+      - join_path: lineitem.part.partsupp.supplier
+        prefix: true
+        includes: "*"
+        excludes:
+          - s_suppkey

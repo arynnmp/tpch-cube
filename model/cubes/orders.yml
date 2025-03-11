@@ -2,7 +2,13 @@ cubes:
   - name: orders
     sql_table: "\"TPCH_SF100\".\"ORDERS\""
 
-    joins: []
+    joins:
+      - name: customer
+        sql: "{CUBE}.\"O_CUSTKEY\" = {customer}.\"C_CUSTKEY\""
+        relationship: many_to_one
+      - name: lineitem
+        sql: "{CUBE}.\"O_ORDERKEY\" = {lineitem}.\"L_ORDERKEY\""
+        relationship: one_to_many
 
     dimensions:
       - name: o_orderkey

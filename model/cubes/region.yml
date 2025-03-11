@@ -2,7 +2,10 @@ cubes:
   - name: region
     sql_table: "\"TPCH_SF100\".\"REGION\""
 
-    joins: []
+    joins: 
+      - name: nation
+        sql: "{CUBE}.\"R_REGIONKEY\" = {nation.n_regionkey}"
+        relationship: one_to_many
 
     dimensions:
       - name: r_regionkey

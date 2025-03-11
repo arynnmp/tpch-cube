@@ -6,6 +6,9 @@ cubes:
       - name: customer
         sql: "{CUBE}.\"N_NATIONKEY\" = {customer}.\"C_NATIONKEY\""
         relationship: one_to_many
+      - name: region
+        sql: "{CUBE}.\"N_REGIONKEY\" = {region}.\"R_REGIONKEY\""
+        relationship: many_to_one
 
     dimensions:
       - name: n_nationkey

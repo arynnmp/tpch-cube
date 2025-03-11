@@ -6,6 +6,12 @@ cubes:
       - name: orders
         sql: "{CUBE}.\"L_ORDERKEY\" = {orders}.\"O_ORDERKEY\""
         relationship: many_to_one
+      - name: part
+        sql: "{CUBE}.\"L_PARTKEY\" = {part}.\"P_PARTKEY\""
+        relationship: many_to_one
+      - name: supplier
+        sql: "{CUBE}.\"L_SUPPKEY\" = {supplier}.\"S_SUPPKEY\""
+        relationship: many_to_one
 
     dimensions:
       - name: l_orderkey
@@ -77,6 +83,10 @@ cubes:
     measures:
       - name: count
         type: count
+
+      - name: TotalRevenue
+        type: sum
+        sql: "({CUBE.l_extendedprice} * (1 - {CUBE.l_discount}))"
 
     pre_aggregations:
       # Pre-aggregation definitions go here.

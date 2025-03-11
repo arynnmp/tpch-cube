@@ -6,6 +6,9 @@ cubes:
       - name: orders
         sql: "{CUBE}.\"C_CUSTKEY\" = {orders}.\"O_CUSTKEY\""
         relationship: one_to_many
+      - name: nation
+        sql: "{CUBE}.\"C_NATIONKEY\" = {nation}.\"N_NATIONKEY\""
+        relationship: many_to_one
 
     dimensions:
       - name: c_custkey
