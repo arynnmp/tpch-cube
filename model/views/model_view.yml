@@ -54,7 +54,6 @@ views:
         prefix: true
         includes: "*"
         excludes:
-          - s_suppkey
           - s_nationkey
     
     folders:
@@ -141,5 +140,6 @@ views:
           - supplier_s_phone
           - supplier_s_acctbal
           - supplier_s_comment
+          - supplier_s_suppkey
           # Measures
           - supplier_count
