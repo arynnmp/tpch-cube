@@ -87,6 +87,20 @@ cubes:
       - name: TotalRevenue
         type: sum
         sql: "({CUBE.l_extendedprice} * (1 - {CUBE.l_discount}))"
+      - name: revenue_1998
+        type: sum
+        sql: "({CUBE}.l_extendedprice * (1 - {CUBE}.l_discount))"
+        filters:
+          -  sql: "YEAR({orders}.o_orderdate) = 1998"
+      - name: revenue_1997
+        type: sum
+        sql: "({CUBE}.l_extendedprice * (1 - {CUBE}.l_discount))"
+        filters:
+          - sql: "YEAR({orders}.o_orderdate) = 1997"
+      - name: yoy_growth_percent
+        type: number
+        sql: "(CASE WHEN {CUBE.revenue_1997} = 0 THEN 0 ELSE ({CUBE.revenue_1998} - {CUBE.revenue_1997}) / {CUBE.revenue_1997} END)"
+        
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
