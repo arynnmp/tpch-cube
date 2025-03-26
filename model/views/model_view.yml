@@ -1,145 +1,145 @@
-views:
-  - name: model_view
-    cubes:
-      - join_path: lineitem
-        prefix: true
-        includes: "*"
-        excludes:
-          - l_orderkey
-          - l_partkey
-          - l_suppkey
-          - l_linenumber
+# views:
+#   - name: model_view
+#     cubes:
+#       - join_path: lineitem
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - l_orderkey
+#           - l_partkey
+#           - l_suppkey
+#           - l_linenumber
 
-      - join_path: lineitem.orders
-        prefix: true
-        includes: "*"
-        excludes:
-          - o_orderkey
-          - o_custkey
+#       - join_path: lineitem.orders
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - o_orderkey
+#           - o_custkey
 
-      - join_path: lineitem.orders.customer
-        prefix: true
-        includes: "*"
-        excludes:
-          - c_custkey
-          - c_nationkey
+#       - join_path: lineitem.orders.customer
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - c_custkey
+#           - c_nationkey
 
-      - join_path: lineitem.orders.customer.nation
-        prefix: true
-        includes: "*"
-        excludes:
-          - n_nationkey
-          - n_regionkey
+#       - join_path: lineitem.orders.customer.nation
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - n_nationkey
+#           - n_regionkey
 
-      - join_path: lineitem.orders.customer.nation.region
-        prefix: true
-        includes: "*"
-        excludes:
-          - r_regionkey
+#       - join_path: lineitem.orders.customer.nation.region
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - r_regionkey
 
-      - join_path: lineitem.part
-        prefix: true
-        includes: "*"
-        excludes:
-          - p_partkey
+#       - join_path: lineitem.part
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - p_partkey
 
-      - join_path: lineitem.part.partsupp
-        prefix: true
-        includes: "*"
-        excludes:
-          - ps_partkey
-          - ps_suppkey
+#       - join_path: lineitem.part.partsupp
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - ps_partkey
+#           - ps_suppkey
 
-      - join_path: lineitem.supplier
-        prefix: true
-        includes: "*"
-        excludes:
-          - s_nationkey
+#       - join_path: lineitem.supplier
+#         prefix: true
+#         includes: "*"
+#         excludes:
+#           - s_nationkey
     
-    folders:
-      - name: Lineitem
-        includes:
-          - lineitem_l_quantity
-          - lineitem_l_extendedprice
-          - lineitem_l_discount
-          - lineitem_l_tax
-          - lineitem_l_returnflag
-          - lineitem_l_linestatus
-          - lineitem_l_shipdate
-          - lineitem_l_commitdate
-          - lineitem_l_receiptdate
-          - lineitem_l_shipinstruct
-          - lineitem_l_shipmode
-          - lineitem_l_comment
-          # Measures
-          - lineitem_count
-          - lineitem_TotalRevenue
+#     folders:
+#       - name: Lineitem
+#         includes:
+#           - lineitem_l_quantity
+#           - lineitem_l_extendedprice
+#           - lineitem_l_discount
+#           - lineitem_l_tax
+#           - lineitem_l_returnflag
+#           - lineitem_l_linestatus
+#           - lineitem_l_shipdate
+#           - lineitem_l_commitdate
+#           - lineitem_l_receiptdate
+#           - lineitem_l_shipinstruct
+#           - lineitem_l_shipmode
+#           - lineitem_l_comment
+#           # Measures
+#           - lineitem_count
+#           - lineitem_TotalRevenue
 
-      - name: Orders
-        includes:
-          - orders_o_orderstatus
-          - orders_o_totalprice
-          - orders_o_orderdate
-          - orders_o_orderpriority
-          - orders_o_clerk
-          - orders_o_shippriority
-          - orders_o_comment
-          # Measures
-          - orders_count
+#       - name: Orders
+#         includes:
+#           - orders_o_orderstatus
+#           - orders_o_totalprice
+#           - orders_o_orderdate
+#           - orders_o_orderpriority
+#           - orders_o_clerk
+#           - orders_o_shippriority
+#           - orders_o_comment
+#           # Measures
+#           - orders_count
 
-      - name: Customer
-        includes:
-          - customer_c_name
-          - customer_c_address
-          - customer_c_phone
-          - customer_c_acctbal
-          - customer_c_mktsegment
-          - customer_c_comment
-          # Measures
-          - customer_count
+#       - name: Customer
+#         includes:
+#           - customer_c_name
+#           - customer_c_address
+#           - customer_c_phone
+#           - customer_c_acctbal
+#           - customer_c_mktsegment
+#           - customer_c_comment
+#           # Measures
+#           - customer_count
 
-      - name: Nation
-        includes:
-          - nation_n_name
-          - nation_n_comment
-          # Measures
-          - nation_count
+#       - name: Nation
+#         includes:
+#           - nation_n_name
+#           - nation_n_comment
+#           # Measures
+#           - nation_count
 
-      - name: Region
-        includes:
-          - region_r_name
-          - region_r_comment
-          # Measures
-          - region_count
+#       - name: Region
+#         includes:
+#           - region_r_name
+#           - region_r_comment
+#           # Measures
+#           - region_count
 
-      - name: Part
-        includes:
-          - part_p_name
-          - part_p_mfgr
-          - part_p_brand
-          - part_p_type
-          - part_p_size
-          - part_p_container
-          - part_p_retailprice
-          - part_p_comment
-          # Measures
-          - part_count
+#       - name: Part
+#         includes:
+#           - part_p_name
+#           - part_p_mfgr
+#           - part_p_brand
+#           - part_p_type
+#           - part_p_size
+#           - part_p_container
+#           - part_p_retailprice
+#           - part_p_comment
+#           # Measures
+#           - part_count
 
-      - name: Partsupp
-        includes:
-          - partsupp_ps_availqty
-          - partsupp_ps_supplycost
-          - partsupp_ps_comment
-          # Measures
-          - partsupp_count
+#       - name: Partsupp
+#         includes:
+#           - partsupp_ps_availqty
+#           - partsupp_ps_supplycost
+#           - partsupp_ps_comment
+#           # Measures
+#           - partsupp_count
 
-      - name: Supplier
-        includes:
-          - supplier_s_name
-          - supplier_s_address
-          - supplier_s_phone
-          - supplier_s_acctbal
-          - supplier_s_comment
-          - supplier_s_suppkey
-          # Measures
-          - supplier_count
+#       - name: Supplier
+#         includes:
+#           - supplier_s_name
+#           - supplier_s_address
+#           - supplier_s_phone
+#           - supplier_s_acctbal
+#           - supplier_s_comment
+#           - supplier_s_suppkey
+#           # Measures
+#           - supplier_count
